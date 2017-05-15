@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\{User,Category,Ad};
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
 
 class MainController extends Controller
 {
@@ -13,7 +14,7 @@ class MainController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function showMain()
+    public function showMain( CategoryRepository $catRepo )
     {
 //        $user = new User;
 //        $user->name = 'Misha';
@@ -24,7 +25,8 @@ class MainController extends Controller
 //        $ad = new Ad();
 //        $ad->title = 'Продам гараж';
 //        $ad->text = 'В хор. стані';
-////        $ad->category_id = 1;
+//        $ad->user_id = 2;
+//////        $ad->category_id = 1;
 //        $ad->category()->associate( 1 );
 //        $ad->user()->associate( $user );
 //        $ad->save();
@@ -38,6 +40,10 @@ class MainController extends Controller
 
         $categories = Category::all();
 
-        return view('main', ['categories' => $categories]);
+        foreach ($categories as $category) {
+            $category->mainPageAds = $category->ads()->orderBy('created_at', 'desc')->take(5)->get();
+        }
+
+        return view('main',['categories' => $categories]);
     }
 }

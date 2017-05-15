@@ -16,7 +16,7 @@ class Admin
     public function handle($request, Closure $next)
     {
         if ( $request->user()->is_admin != 1) {
-            return response()->redirectTo('/');
+            return response()->redirectTo('/login');
         }
 
         return $next($request);

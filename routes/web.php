@@ -16,14 +16,21 @@ Route::get('/', [
     'uses' => 'MainController@showMain'
 ]);
 
-Route::get('/catalog', [
+Route::get('/catalog/{id?}', [
     'as' => 'catalog',
-    'uses' => 'CatalogController@showCatalog'
+    'uses' => 'CatalogController@showCategory'
 ]);
 
 Route::get('/about', function() {
     return view('about');
 })->name('about');
+
+
+Route::get('/create-ad', [
+    'as' => 'create.ad',
+    'middleware' => 'auth',
+    'uses' => 'CatalogController@showCategory'
+]);
 
 Route::group(['middleware' => ['auth','admin']], function () {
 
@@ -33,8 +40,6 @@ Route::group(['middleware' => ['auth','admin']], function () {
             return 'hello admin';
         }
     ]);
-
-
 
 });
 
