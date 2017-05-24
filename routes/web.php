@@ -32,10 +32,10 @@ Route::get('/create-ad', [
     'uses' => 'CatalogController@showCategory'
 ]);
 
-Route::group(['middleware' => ['auth','admin'], 'as' => '::admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth','admin'], 'as' => 'admin::', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', [
-        'as' => 'admin.main',
+        'as' => 'main',
         'uses' => function() {
             return 'hello admin';
         }
@@ -47,8 +47,13 @@ Route::group(['middleware' => ['auth','admin'], 'as' => '::admin', 'prefix' => '
     // /admin/user/1/delete
     // php artisan route:list
     Route::resource('user', 'UserController', [
-        'only' => ['index', 'edit', 'update', 'destroy']
+        'only' => ['store', 'index', 'edit', 'update', 'destroy','create']
     ]);
+
+//    Route::post('/user', [
+//        'as' => 'user.store',
+//        'uses' => 'UserController@store'
+//    ]);
 
 });
 
