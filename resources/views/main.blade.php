@@ -4,32 +4,37 @@
 
 @section('content')
 
-    <h1>Головна сторінка</h1>
+    {{ trans('main.header') }}
 
-    <div class="catalog">
+    <a href="{{ route('about') }}">route /about</a>
 
-        @foreach( $categories as $key => $category )
+    {{----}}
+    {{--<h1>Головна сторінка</h1>--}}
+
+    {{--<div class="catalog">--}}
+
+        {{--@foreach( $categories as $key => $category )--}}
 
             {{--/catalog/2--}}
-            <a href="{{ route('catalog',['id' => $category->id]) }}">
-                {{ $category->title }}
-            </a>
+            {{--<a href="{{ route('catalog',['id' => $category->id]) }}">--}}
+                {{--{{ $category->title }}--}}
+            {{--</a>--}}
 
-            <p>{{ ++$key }}. {{ $category->title }}</p>
+            {{--<p>{{ ++$key }}. {{ $category->title }}</p>--}}
 
-            @if( $category->ads()->count() > 0 )
-                @foreach($category->mainPageAds as $key2 => $ad)
-                    <p>{{ ++$key2 }}. {{ $ad->title }}</p>
-                @endforeach
-            @endif
+            {{--@if( $category->ads()->count() > 0 )--}}
+                {{--@foreach($category->mainPageAds as $key2 => $ad)--}}
+                    {{--<p>{{ ++$key2 }}. {{ $ad->title }}</p>--}}
+                {{--@endforeach--}}
+            {{--@endif--}}
 
-        @endforeach
+        {{--@endforeach--}}
 
-    </div>
+    {{--</div>--}}
 
-    <form method="POST" action="/profile">
-        {{ csrf_field() }}
+    {{--<form method="POST" action="/profile">--}}
+        {{--{{ csrf_field() }}--}}
 
-    </form>
+    {{--</form>--}}
 
 @endsection
