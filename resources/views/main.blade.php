@@ -4,6 +4,9 @@
 
 @section('content')
 
+    {{ date('H:i d.m.Y') }}
+    {{ dump( date_default_timezone_get() ) }}
+
     {{ trans('main.header') }}
 
     <a href="{{ route('about') }}">route /about</a>

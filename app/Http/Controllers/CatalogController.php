@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\{Ad,Category};
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +24,8 @@ class CatalogController extends Controller
         return view('category',
             [
                 'categories' => Category::all(),
-                'ads' => $ads ?? $category->ads
+                'ads' => $ads ?? $category->ads,
+                'catId' => $id
             ]
         );
     }
