@@ -6,12 +6,17 @@ use App\{Ad,Category};
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\Events\AdWasCreated;
+use Illuminate\Support\Facades\Event;
 
 class CatalogController extends Controller
 {
 
     public function showCategory( $id = null )
     {
+
+        Event::fire( new AdWasCreated() );
+
         $ads = null;
 
         if( !$id ) {
