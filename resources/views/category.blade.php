@@ -6,10 +6,10 @@
 
     {{--{{ dump( Route::current() ) }}--}}
 
-    {{--{{ dump( locale_link(route(Route::current()->getName()), 'en') ) }}--}}
-{{--    {{ dump( locale_link(route(Route::current()->getName()), 'ua') ) }}--}}
+    {{ dump( locale_link($_SERVER['REQUEST_URI'], 'en') ) }}
+    {{ dump( locale_link($_SERVER['REQUEST_URI'], 'ua') ) }}
 
-    <a href="{{ locale_link(route(Route::current()->getName()), 'en') }}">EN</a>
-    <a href="{{ locale_link(route(Route::current()->getName()), 'ua') }}">UA</a>
+    <a href="{{ locale_link($_SERVER['REQUEST_URI'], 'en') }}">EN</a>
+    <a href="{{ locale_link($_SERVER['REQUEST_URI'], 'ua') }}">UA</a>
 
 @endsection
