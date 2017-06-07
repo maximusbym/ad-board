@@ -13,9 +13,8 @@ class AdCheck
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(  )
     {
-        //
     }
 
     /**
@@ -26,6 +25,9 @@ class AdCheck
      */
     public function handle(AdWasCreated $event)
     {
-        dump('AdWasCreated LISTENER');
+        if( strpos($event->ad->text, 'дурак') !== false ) {
+            $event->ad->text = str_replace('дурак', '***', $event->ad->text);
+            $event->ad->save();
+        }
     }
 }

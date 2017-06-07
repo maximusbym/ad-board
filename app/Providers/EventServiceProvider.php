@@ -14,8 +14,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\AdWasCreated' => [
-            'App\Listeners\AdCheck',
-        ],
+            'App\Listeners\AdCheck'
+        ]
     ];
 
     /**

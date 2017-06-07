@@ -2,8 +2,6 @@
 
 namespace App\Events;
 
-use App\Ad;
-
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -12,20 +10,18 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class AdWasCreated
+class AdWasDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $ad;
-
     /**
-     * Method description...
-     * AdWasCreated constructor.
-     * @param Ad $ad - Це оголошення
+     * Create a new event instance.
+     *
+     * @return void
      */
-    public function __construct( Ad $ad )
+    public function __construct()
     {
-        $this->ad = $ad;
+        //
     }
 
     /**
@@ -35,6 +31,6 @@ class AdWasCreated
      */
     public function broadcastOn()
     {
-//        return new PrivateChannel('channel-name');
+        return new PrivateChannel('channel-name');
     }
 }

@@ -15,7 +15,7 @@ class CatalogController extends Controller
     public function showCategory( $id = null )
     {
 
-        Event::fire( new AdWasCreated() );
+//        Event::fire( new AdWasCreated( $ad ) );
 
         $ads = null;
 
