@@ -17,5 +17,5 @@ function locale_link( $route, $locale ) {
         $res = $locale != 'ua' ? '/'.$locale.$route : $route ;
     }
 
-    return $res;
+    return $res == '' ? '/' : $res;
 }
